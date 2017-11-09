@@ -1,0 +1,1 @@
+include ':app', ':pyrtools-core-kotlin', ':pyrtools-core-android', ':pyrtools-core-android-ui'

@@ -1,0 +1,39 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+ext {
+  bintrayRepo = 'pyrtools'
+  bintrayName = 'pyrtools-core-kotlin'
+
+  publishedGroupId = 'com.pyrapps.pyrtools'
+  libraryName = 'PyRToolsCore-Kotlin'
+  artifact = 'pyrtools-core-kotlin'
+
+  libraryDescription = 'A basic kotlin structure to ease the creation of clean Android apps'
+
+  siteUrl = 'https://github.com/rromane/PyRTools'
+  gitUrl = 'https://github.com/rromane/PyRTools.git'
+
+  libraryVersion = '1.0.0'
+
+  developerId = 'rromane'
+  developerName = 'Raul Roman'
+  developerEmail = 'rr.dev.android@gmail.com'
+
+  licenseName = 'The Apache Software License, Version 2.0'
+  licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+  allLicenses = ["Apache-2.0"]
+}
+
+dependencies {
+  implementation fileTree(include: ['*.jar'], dir: 'libs')
+  implementation 'com.google.code.gson:gson:2.8.2'
+  implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.19.3'
+  testImplementation 'junit:junit:4.12'
+  testImplementation 'org.mockito:mockito-core:2.10.0'
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+  implementation 'com.nhaarman:mockito-kotlin-kt1.1:1.5.0'
+}
+repositories {
+  mavenCentral()
+}

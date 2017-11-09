@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/PyRTools2_2.iml" filepath="$PROJECT_DIR$/PyRTools2_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyrtools-core-android/pyrtools-core-android.iml" filepath="$PROJECT_DIR$/pyrtools-core-android/pyrtools-core-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyrtools-core-android-ui/pyrtools-core-android-ui.iml" filepath="$PROJECT_DIR$/pyrtools-core-android-ui/pyrtools-core-android-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyrtools-core-kotlin/pyrtools-core-kotlin.iml" filepath="$PROJECT_DIR$/pyrtools-core-kotlin/pyrtools-core-kotlin.iml" />
+    </modules>
+  </component>
+</project>

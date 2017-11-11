@@ -14,7 +14,13 @@ class Repository<in Params, Data>(private val sources: List<Source<Params, Resul
         return result
     }
 
-    private fun updateSources(params: Params?, result: Result<Data>, source: Source<Params, Result<Data>>) {
+    fun clear(params: Params? = null) {
+        sources.filter { it is Clearable<*> }.forEach { (it as Clearable<Params>).clear(params) }
+    }
+
+    private fun updateSources(params: Params?,
+                              result: Result<Data>,
+                              source: Source<Params, Result<Data>>) {
         val lastPositionToUpdate = sources.indexOfFirst { it == source }
         if (lastPositionToUpdate < 0) return
         sources.take(lastPositionToUpdate)

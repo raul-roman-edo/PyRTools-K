@@ -43,6 +43,17 @@ class RepositoryTest {
         Assert.assertThat(data.payload, `is`("data-source2-source1"))
     }
 
+    @Test
+    fun `Checks clear method is working`() {
+        val source1 = createClearableSource("source1", true, "data")
+        val repository = Repository(listOf(source1))
+
+        repository.clear()
+        val data = repository.obtain()
+
+        Assert.assertThat(data.isValid, `is`(false))
+    }
+
     private fun createUpdateableSource(name: String, initialValidity: Boolean, data: String)
             : Source<Unit, Result<String>> {
         return object : Source<Unit, Result<String>>, Updateable<Unit, Result<String>> {
@@ -64,6 +75,19 @@ class RepositoryTest {
             : Source<Unit, Result<String>> {
         return object : Source<Unit, Result<String>> {
             override fun request(params: Unit?) = Result(initialValidity, "$data-$name")
+        }
+    }
+
+    private fun createClearableSource(name: String, initialValidity: Boolean, data: String)
+            : Source<Unit, Result<String>> {
+        return object : Source<Unit, Result<String>>, Clearable<Unit> {
+            var result: Result<String>? = Result(initialValidity, "$data-$name")
+
+            override fun request(params: Unit?) = result?.apply { result } ?: Result()
+
+            override fun clear(params: Unit?) {
+                result = null
+            }
         }
     }
 }

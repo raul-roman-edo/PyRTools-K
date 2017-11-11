@@ -7,6 +7,6 @@ import com.pyrapps.pyrtools.core.android.ui.extensions.inflateView
 
 class CardViewHolder(parent: ViewGroup, layoutId: Int) : ViewHolder(parent.inflateView(layoutId)) {
     fun fillWith(card: Card<*>) {
-        itemView.tag = card.model
+        itemView.tag = card
     }
 }

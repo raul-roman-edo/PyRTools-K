@@ -3,6 +3,7 @@ package com.pyrapps.pyrtools.gallery.cards.images
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.ImageView
+import com.pyrapps.pyrtools.core.android.ui.cards.Card
 import com.pyrapps.pyrtools.core.android.ui.extensions.load
 
 
@@ -14,7 +15,6 @@ class CardImageView(context: Context, attributeSet: AttributeSet? = null, defSty
 
     override fun setTag(tag: Any?) {
         super.setTag(tag)
-        tag?.run { load((this as ImageModel).url) }
+        tag?.run { (this as Card<ImageModel>).model?.run { load(url) } }
     }
-
 }

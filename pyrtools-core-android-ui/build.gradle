@@ -15,7 +15,7 @@ ext {
   siteUrl = 'https://github.com/rromane/PyRTools-K'
   gitUrl = 'https://github.com/rromane/PyRTools-K.git'
 
-  libraryVersion = '1.0.0'
+  libraryVersion = '1.0.1'
 
   developerId = 'rromane'
   developerName = 'Raul Roman'

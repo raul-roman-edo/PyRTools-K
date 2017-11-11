@@ -1,6 +1,30 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
+ext {
+  bintrayRepo = 'pyrtools-kotlin'
+  bintrayName = 'pyrtools-core-android-kotlin'
+
+  publishedGroupId = 'com.pyrapps.pyrtools'
+  libraryName = 'PyRToolsCoreAndroid-Kotlin'
+  artifact = 'pyrtools-core-android'
+
+  libraryDescription = 'A basic kotlin structure to ease the creation of clean Android apps'
+
+  siteUrl = 'https://github.com/rromane/PyRTools-K'
+  gitUrl = 'https://github.com/rromane/PyRTools-K.git'
+
+  libraryVersion = '1.0.0'
+
+  developerId = 'rromane'
+  developerName = 'Raul Roman'
+  developerEmail = 'rr.dev.android@gmail.com'
+
+  licenseName = 'The Apache Software License, Version 2.0'
+  licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+  allLicenses = ["Apache-2.0"]
+}
+
 android {
   compileSdkVersion 26
   defaultConfig {
@@ -20,6 +44,10 @@ android {
   }
 }
 
+tasks.withType(Javadoc) {
+  enabled = false
+}
+
 dependencies {
   implementation fileTree(include: ['*.jar'], dir: 'libs')
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
@@ -29,3 +57,5 @@ dependencies {
   androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
   implementation project(':pyrtools-core-kotlin')
 }
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

@@ -6,6 +6,7 @@ import com.pyrapps.pyrtools.core.android.ui.cards.Card
 import com.pyrapps.pyrtools.core.execution.Executor
 import com.pyrapps.pyrtools.core.execution.async
 import com.pyrapps.pyrtools.core.execution.sync
+import com.pyrapps.pyrtools.gallery.GalleryPresenter.CardType.IMAGE
 import com.pyrapps.pyrtools.gallery.cards.images.ImageModel
 
 class GalleryPresenter(
@@ -29,12 +30,16 @@ class GalleryPresenter(
 
   private fun createImagesDispatcher(result: List<ImageModel>) {
     val cards = result.flatMap { transformToCard(it) }
-    view.refresh(cards)
+    view.update(cards)
   }
 
-  private fun transformToCard(image: ImageModel) = listOf(Card(image.url, ImageModel.ID, image))
+  private fun transformToCard(image: ImageModel) = listOf(Card(IMAGE, image.url, image))
 
   interface View {
-    fun refresh(newCards: List<Card<*>>)
+    fun update(newCards: List<Card<*>>)
+  }
+
+  enum class CardType {
+    IMAGE
   }
 }

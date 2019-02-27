@@ -1,6 +1,17 @@
 package com.pyrapps.pyrtools.core.android.ui.cards
 
-data class Card<out Model>(val id: String,
-                           val type: Int,
-                           val model: Model? = null,
-                           var isSwipeable: Boolean = false)
+class Card<Model> @JvmOverloads constructor(
+  val type: Enum<*>,
+  val id: String = type.toString(),
+  val model: Model? = null,
+  val isSwipeable: Boolean = false
+) {
+
+  override fun equals(other: Any?): Boolean {
+    if (this === other) return true
+    if (other == null || other !is Card<*>) return false
+    return id == other.id
+  }
+
+  override fun hashCode() = id.hashCode()
+}

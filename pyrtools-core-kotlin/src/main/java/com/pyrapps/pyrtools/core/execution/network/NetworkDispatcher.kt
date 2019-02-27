@@ -11,17 +11,17 @@ class NetworkDispatcher<Payload>(success: ((ApiResponse<Payload>) -> Unit)? = nu
     private var globalCallbacks: NavigableMap<Int, (ApiResponse<Payload>) -> Unit> = TreeMap()
 
     init {
-        globalCallbacks.put(100, success)
-        globalCallbacks.put(400, error)
-        globalCallbacks.put(0, connectivityError)
+        globalCallbacks[100] = success
+        globalCallbacks[400] = error
+        globalCallbacks[0] = connectivityError
     }
 
     fun addStatusCallback(status: Int, callback: (ApiResponse<Payload>) -> Unit) {
-        statusCallbacks.put(status, callback)
+        statusCallbacks[status] = callback
     }
 
     fun addErrorCallback(errorCode: String, callback: (ApiResponse<Payload>) -> Unit) {
-        errorCallbacks.put(errorCode, callback)
+        errorCallbacks[errorCode] = callback
     }
 
     override fun invoke(result: ApiResponse<Payload>) {

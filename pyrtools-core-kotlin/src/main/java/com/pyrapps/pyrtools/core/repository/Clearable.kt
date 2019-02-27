@@ -1,6 +1,6 @@
 package com.pyrapps.pyrtools.core.repository
 
-
-interface Clearable<in Params> {
-    fun clear(params: Params? = null)
+interface Clearable<Params> {
+  fun clear() = clear(null)
+  fun clear(params: Params?)
 }

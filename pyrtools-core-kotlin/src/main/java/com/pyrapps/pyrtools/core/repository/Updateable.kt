@@ -1,5 +1,6 @@
 package com.pyrapps.pyrtools.core.repository
 
-interface Updateable<in Params, in Data> {
-    fun update(params: Params? = null, data: Data)
+interface Updateable<Params, in Data> {
+  fun update(data: Data) = update(null, data)
+  fun update(params: Params?, data: Data)
 }

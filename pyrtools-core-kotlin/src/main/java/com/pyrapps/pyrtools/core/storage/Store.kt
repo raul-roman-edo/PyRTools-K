@@ -1,7 +1,18 @@
 package com.pyrapps.pyrtools.core.storage
 
+import java.lang.reflect.Type
 
-interface Store<in Params, Result> {
-    fun load(params: Params? = null): Result
-    fun save(data: Result)
+class Store<Data> @JvmOverloads constructor (
+  private val key: String,
+  private val default: Data,
+  private val storageSystem: StorageSystem<Data>,
+  private val type: Type? = null
+) {
+
+  fun load() = storageSystem.load(key, default, type)
+
+  fun save(data: Data?) {
+    storageSystem.save(key, data, type)
+  }
+
 }

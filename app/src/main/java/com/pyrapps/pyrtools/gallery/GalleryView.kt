@@ -73,7 +73,8 @@ class GalleryView @JvmOverloads constructor(
         storageSystem = storageSystem,
         type = object : TypeToken<List<ImageModel>>() {}.type
     )
-    val prefsCache = PreferenceSource<Unit?, List<ImageModel>>(store)
+    val prefsCache =
+      PreferenceSource<Unit?, List<ImageModel>>(store).apply { isValid = { it.isNotEmpty() } }
     val resourceLoader = RawResourceByNameCommand(context.applicationContext)
     val remote = ImagesSource(resourceLoader)
 
